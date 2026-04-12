@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プライバシーポリシー / Privacy Policy — おうちレシピ</title>
+  <style>
+    :root {
+      --primary: #7EC8A4;
+      --bg: #FAFAF8;
+      --card: #FFFFFF;
+      --text: #2D2D2D;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+                   "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    header {
+      background: var(--primary);
+      padding: 48px 24px 36px;
+      text-align: center;
+      color: white;
+    }
+
+    header .emoji { font-size: 48px; display: block; margin-bottom: 12px; }
+
+    header h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    .lang-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .lang-btn {
+      background: rgba(255,255,255,0.25);
+      border: 1.5px solid rgba(255,255,255,0.6);
+      color: white;
+      padding: 6px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .lang-btn.active,
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.45);
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .updated {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    section h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+    }
+
+    section h2 .icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    p { margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    ul li { margin-bottom: 6px; }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .highlight {
+      background: #F0FBF5;
+      border-left: 3px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Language switching */
+    .ja { display: block; }
+    .en { display: none; }
+    body.en-mode .ja { display: none; }
+    body.en-mode .en { display: block; }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="emoji">🍳</span>
+  <h1>
+    <span class="ja">プライバシーポリシー</span>
+    <span class="en">Privacy Policy</span>
+  </h1>
+  <p>
+    <span class="ja">おうちレシピ</span>
+    <span class="en">Home Recipe</span>
+  </p>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('ja')" id="btn-ja">🇯🇵 日本語</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">🇺🇸 English</button>
+  </div>
+</header>
+
+<main>
+  <p class="updated">
+    <span class="ja">最終更新日: 2026年4月12日</span>
+    <span class="en">Last updated: April 12, 2026</span>
+  </p>
+
+  <!-- はじめに -->
+  <section>
+    <h2><span class="icon">📋</span>
+      <span class="ja">はじめに</span>
+      <span class="en">Introduction</span>
+    </h2>
+    <p class="ja">
+      「おうちレシピ」（以下「本アプリ」）は、ユーザーのプライバシーを尊重し、
+      個人情報の保護に努めます。本ポリシーは、本アプリが収集する情報と
+      その利用方法について説明します。
+    </p>
+    <p class="en">
+      "Home Recipe" (the "App") is committed to respecting your privacy and
+      protecting your personal information. This policy explains what information
+      the App collects and how it is used.
+    </p>
+  </section>
+
+  <!-- 収集する情報 -->
+  <section>
+    <h2><span class="icon">📦</span>
+      <span class="ja">収集する情報</span>
+      <span class="en">Information We Collect</span>
+    </h2>
+
+    <p class="ja"><strong>本アプリが端末内に保存する情報：</strong></p>
+    <p class="en"><strong>Information stored locally on your device:</strong></p>
+    <ul>
+      <li>
+        <span class="ja">登録した食材（名前・絵文字）</span>
+        <span class="en">Registered ingredients (name and emoji)</span>
+      </li>
+      <li>
+        <span class="ja">生成されたレシピの履歴</span>
+        <span class="en">Generated recipe history</span>
+      </li>
+      <li>
+        <span class="ja">お気に入りレシピ</span>
+        <span class="en">Favorite recipes</span>
+      </li>
+      <li>
+        <span class="ja">アプリの言語設定</span>
+        <span class="en">App language preferences</span>
+      </li>
+      <li>
+        <span class="ja">本日のAI利用回数（無料プランの管理用）</span>
+        <span class="en">Daily AI usage count (for free plan management)</span>
+      </li>
+    </ul>
+
+    <div class="highlight">
+      <span class="ja">
+        これらの情報はすべてお使いの端末内（SharedPreferences）にのみ保存され、
+        開発者のサーバーには送信・保存されません。
+      </span>
+      <span class="en">
+        All of this information is stored only on your device (SharedPreferences)
+        and is never transmitted to or stored on the developer's servers.
+      </span>
+    </div>
+  </section>
+
+  <!-- AIサービスの利用 -->
+  <section>
+    <h2><span class="icon">🤖</span>
+      <span class="ja">AIサービス（OpenAI）の利用</span>
+      <span class="en">AI Service (OpenAI) Usage</span>
+    </h2>
+    <p class="ja">
+      レシピ生成時、登録された食材名とジャンル選択のみを
+      <strong>OpenAI API</strong> に送信します。
+      氏名・メールアドレス・位置情報などの個人を特定できる情報は一切送信しません。
+    </p>
+    <p class="en">
+      When generating recipes, only the registered ingredient names and
+      selected genre are sent to the <strong>OpenAI API</strong>.
+      No personally identifiable information such as name, email, or
+      location is transmitted.
+    </p>
+    <p>
+      <span class="ja">OpenAI のプライバシーポリシー: </span>
+      <span class="en">OpenAI Privacy Policy: </span>
+      <a href="https://openai.com/policies/privacy-policy" target="_blank">
+        openai.com/policies/privacy-policy
+      </a>
+    </p>
+  </section>
+
+  <!-- 広告（AdMob） -->
+  <section>
+    <h2><span class="icon">📢</span>
+      <span class="ja">広告（Google AdMob）</span>
+      <span class="en">Advertising (Google AdMob)</span>
+    </h2>
+    <p class="ja">
+      無料プランのユーザーには、Google AdMob による広告が表示されます。
+      AdMob はユーザーの興味・関心に基づいたパーソナライズ広告を配信するため、
+      広告識別子（IDFA）などのデータを収集することがあります。
+    </p>
+    <p class="en">
+      Free plan users will see advertisements served by Google AdMob.
+      AdMob may collect data such as advertising identifiers (IDFA)
+      to serve personalized ads based on your interests.
+    </p>
+    <p class="ja">プレミアムプランでは広告は表示されません。</p>
+    <p class="en">Premium plan users will not see any advertisements.</p>
+    <p>
+      <span class="ja">Google のプライバシーポリシー: </span>
+      <span class="en">Google Privacy Policy: </span>
+      <a href="https://policies.google.com/privacy" target="_blank">
+        policies.google.com/privacy
+      </a>
+    </p>
+  </section>
+
+  <!-- サブスクリプション（RevenueCat） -->
+  <section>
+    <h2><span class="icon">💳</span>
+      <span class="ja">サブスクリプション（RevenueCat）</span>
+      <span class="en">Subscription (RevenueCat)</span>
+    </h2>
+    <p class="ja">
+      プレミアムプランの購入・管理には <strong>RevenueCat</strong> を使用しています。
+      購入処理は Apple の App Store を通じて行われます。
+      クレジットカード情報等の決済情報は本アプリでは保持しません。
+    </p>
+    <p class="en">
+      Premium plan purchases and management are handled by <strong>RevenueCat</strong>.
+      All payments are processed through Apple's App Store.
+      The App does not store any payment or credit card information.
+    </p>
+    <p>
+      <span class="ja">RevenueCat のプライバシーポリシー: </span>
+      <span class="en">RevenueCat Privacy Policy: </span>
+      <a href="https://www.revenuecat.com/privacy" target="_blank">
+        revenuecat.com/privacy
+      </a>
+    </p>
+  </section>
+
+  <!-- 第三者への提供 -->
+  <section>
+    <h2><span class="icon">🔒</span>
+      <span class="ja">第三者への情報提供</span>
+      <span class="en">Information Sharing</span>
+    </h2>
+    <p class="ja">
+      法令に基づく場合を除き、ユーザーの情報を第三者に販売・共有・開示することはありません。
+      上記の外部サービス（OpenAI・Google AdMob・RevenueCat）との連携を除き、
+      個人情報を第三者に提供することはありません。
+    </p>
+    <p class="en">
+      We do not sell, share, or disclose your information to third parties
+      except as required by law or through the third-party services
+      described above (OpenAI, Google AdMob, RevenueCat).
+    </p>
+  </section>
+
+  <!-- 子供のプライバシー -->
+  <section>
+    <h2><span class="icon">👶</span>
+      <span class="ja">お子様のプライバシー</span>
+      <span class="en">Children's Privacy</span>
+    </h2>
+    <p class="ja">
+      本アプリは13歳未満のお子様を対象としていません。
+      13歳未満の方の個人情報を意図的に収集することはありません。
+    </p>
+    <p class="en">
+      This App is not directed at children under the age of 13.
+      We do not knowingly collect personal information from children under 13.
+    </p>
+  </section>
+
+  <!-- ポリシーの変更 -->
+  <section>
+    <h2><span class="icon">📝</span>
+      <span class="ja">プライバシーポリシーの変更</span>
+      <span class="en">Changes to This Policy</span>
+    </h2>
+    <p class="ja">
+      本ポリシーは必要に応じて更新することがあります。
+      重要な変更がある場合は、このページにて最新版を公開します。
+      定期的にご確認ください。
+    </p>
+    <p class="en">
+      This policy may be updated from time to time.
+      When significant changes are made, the latest version will be
+      published on this page. Please check back periodically.
+    </p>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section>
+    <h2><span class="icon">✉️</span>
+      <span class="ja">お問い合わせ</span>
+      <span class="en">Contact Us</span>
+    </h2>
+    <p class="ja">
+      プライバシーに関するご質問・ご意見は、App Store のレビューまたは
+      以下のメールアドレスまでお気軽にお問い合わせください。
+    </p>
+    <p class="en">
+      If you have any questions or concerns about this privacy policy,
+      please contact us via App Store reviews or the email address below.
+    </p>
+    <!-- TODO: メールアドレスを入力してください -->
+    <p><a href="mailto:your@email.com">your@email.com</a></p>
+  </section>
+
+</main>
+
+<footer>
+  <p>
+    <span class="ja">© 2026 おうちレシピ. All rights reserved.</span>
+    <span class="en">© 2026 Home Recipe. All rights reserved.</span>
+  </p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('en-mode', lang === 'en');
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+  }
+</script>
+
+</body>
+</html>
