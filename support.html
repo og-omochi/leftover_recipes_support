@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>サポート / Support — おうちレシピ</title>
+  <style>
+    :root {
+      --primary: #7EC8A4;
+      --bg: #FAFAF8;
+      --card: #FFFFFF;
+      --text: #2D2D2D;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+                   "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    header {
+      background: var(--primary);
+      padding: 48px 24px 36px;
+      text-align: center;
+      color: white;
+    }
+
+    header .emoji { font-size: 48px; display: block; margin-bottom: 12px; }
+
+    header h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    .lang-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .lang-btn {
+      background: rgba(255,255,255,0.25);
+      border: 1.5px solid rgba(255,255,255,0.6);
+      color: white;
+      padding: 6px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .lang-btn.active,
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.45);
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    section h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    section h2 .icon { font-size: 20px; line-height: 1; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+
+    .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .faq-item:first-child { padding-top: 0; }
+
+    .faq-q {
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .faq-q::before {
+      content: "Q.";
+      color: var(--primary);
+      flex-shrink: 0;
+      font-weight: 800;
+    }
+
+    .faq-a {
+      color: var(--muted);
+      font-size: 14px;
+      padding-left: 24px;
+    }
+
+    .contact-box {
+      text-align: center;
+      padding: 8px 0;
+    }
+
+    .contact-box a {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 28px;
+      font-weight: 700;
+      font-size: 15px;
+      margin-top: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .contact-box a:hover { opacity: 0.85; }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    p { margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .ja { display: block; }
+    .en { display: none; }
+    body.en-mode .ja { display: none; }
+    body.en-mode .en { display: block; }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="emoji">🍳</span>
+  <h1>
+    <span class="ja">サポート</span>
+    <span class="en">Support</span>
+  </h1>
+  <p>
+    <span class="ja">おうちレシピ</span>
+    <span class="en">Home Recipe</span>
+  </p>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('ja')" id="btn-ja">🇯🇵 日本語</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">🇺🇸 English</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- よくある質問 -->
+  <section>
+    <h2><span class="icon">💬</span>
+      <span class="ja">よくある質問</span>
+      <span class="en">Frequently Asked Questions</span>
+    </h2>
+
+    <div class="faq-item">
+      <p class="faq-q">
+        <span class="ja">AIのレシピ生成でエラーが出ます</span>
+        <span class="en">I'm getting an error when generating recipes with AI</span>
+      </p>
+      <p class="faq-a">
+        <span class="ja">
+          「APIの利用制限に達しました」と表示される場合、OpenAIのAPIクレジットが不足しています。
+          platform.openai.com にログインしてクレジットを追加してください。
+          ネットワークエラーの場合は、通信環境を確認の上、再度お試しください。
+        </span>
+        <span class="en">
+          If you see "API rate limit reached," your OpenAI API credits may be exhausted.
+          Please log in to platform.openai.com and add credits.
+          For network errors, please check your connection and try again.
+        </span>
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">
+        <span class="ja">1日3回の無料制限をリセットできますか？</span>
+        <span class="en">Can I reset the daily free limit of 3 queries?</span>
+      </p>
+      <p class="faq-a">
+        <span class="ja">
+          無料プランのAI利用回数は毎日0時にリセットされます。
+          制限なしでご利用になりたい場合はプレミアムプランへのアップグレードをご検討ください。
+        </span>
+        <span class="en">
+          The free plan's daily AI query count resets at midnight every day.
+          For unlimited usage, please consider upgrading to the Premium plan.
+        </span>
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">
+        <span class="ja">プレミアムプランを購入したのに反映されません</span>
+        <span class="en">I purchased Premium but it's not being applied</span>
+      </p>
+      <p class="faq-a">
+        <span class="ja">
+          設定画面の「以前の購入を復元する」をタップしてください。
+          それでも解決しない場合は、アプリを再起動するか、
+          iPhoneを再起動してお試しください。
+        </span>
+        <span class="en">
+          Please tap "Restore Purchase" on the Settings screen.
+          If the issue persists, try restarting the app or your iPhone.
+        </span>
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">
+        <span class="ja">プレミアムプランをキャンセルしたいです</span>
+        <span class="en">How do I cancel my Premium subscription?</span>
+      </p>
+      <p class="faq-a">
+        <span class="ja">
+          キャンセルはApp Storeから行えます。<br>
+          設定アプリ → Apple ID → サブスクリプション → おうちレシピ → サブスクリプションをキャンセル
+        </span>
+        <span class="en">
+          You can cancel via the App Store.<br>
+          Settings → Apple ID → Subscriptions → Home Recipe → Cancel Subscription
+        </span>
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">
+        <span class="ja">レシピの履歴を削除したいです</span>
+        <span class="en">How do I delete my recipe history?</span>
+      </p>
+      <p class="faq-a">
+        <span class="ja">
+          履歴タブで各レシピのゴミ箱アイコンをタップすると削除できます。
+        </span>
+        <span class="en">
+          In the History tab, tap the trash icon on each recipe card to delete it.
+        </span>
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q">
+        <span class="ja">アプリのデータを削除したいです</span>
+        <span class="en">How do I delete all my app data?</span>
+      </p>
+      <p class="faq-a">
+        <span class="ja">
+          アプリをアンインストールすると、端末に保存されたすべてのデータ（食材・レシピ履歴）が削除されます。
+        </span>
+        <span class="en">
+          Uninstalling the app will delete all locally stored data
+          (ingredients, recipe history, etc.) from your device.
+        </span>
+      </p>
+    </div>
+
+  </section>
+
+  <!-- お問い合わせ -->
+  <section>
+    <h2><span class="icon">✉️</span>
+      <span class="ja">お問い合わせ</span>
+      <span class="en">Contact Us</span>
+    </h2>
+    <p class="ja">
+      ご不明な点やバグの報告などは、以下のメールアドレスまでお気軽にご連絡ください。
+      通常2〜3営業日以内にご返信いたします。
+    </p>
+    <p class="en">
+      For questions or bug reports, please contact us at the email below.
+      We typically respond within 2–3 business days.
+    </p>
+    <div class="contact-box">
+      <!-- TODO: メールアドレスを入力してください -->
+      <a href="mailto:your@email.com">✉️ your@email.com</a>
+      <p class="ja">※App Storeのレビューでもご意見をお待ちしています</p>
+      <p class="en">※ We also welcome feedback via App Store reviews</p>
+    </div>
+  </section>
+
+  <!-- リンク -->
+  <section>
+    <h2><span class="icon">🔗</span>
+      <span class="ja">関連リンク</span>
+      <span class="en">Related Links</span>
+    </h2>
+    <p>
+      <a href="./privacy-policy.html">
+        <span class="ja">🔒 プライバシーポリシー</span>
+        <span class="en">🔒 Privacy Policy</span>
+      </a>
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <p>
+    <span class="ja">© 2026 おうちレシピ. All rights reserved.</span>
+    <span class="en">© 2026 Home Recipe. All rights reserved.</span>
+  </p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('en-mode', lang === 'en');
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+  }
+</script>
+
+</body>
+</html>
