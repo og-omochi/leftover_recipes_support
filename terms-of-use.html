@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>利用規約 / Terms of Use — おうちレシピ</title>
+  <style>
+    :root {
+      --primary: #7EC8A4;
+      --bg: #FAFAF8;
+      --card: #FFFFFF;
+      --text: #2D2D2D;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+                   "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    header {
+      background: var(--primary);
+      padding: 48px 24px 36px;
+      text-align: center;
+      color: white;
+    }
+
+    header .emoji { font-size: 48px; display: block; margin-bottom: 12px; }
+
+    header h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    .lang-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .lang-btn {
+      background: rgba(255,255,255,0.25);
+      border: 1.5px solid rgba(255,255,255,0.6);
+      color: white;
+      padding: 6px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .lang-btn.active,
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.45);
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .updated {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    section h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+    }
+
+    section h2 .icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    p { margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    ul li { margin-bottom: 6px; }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .highlight {
+      background: #F0FBF5;
+      border-left: 3px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .subscription-box {
+      background: #F0FBF5;
+      border: 1.5px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 10px;
+    }
+
+    .subscription-box table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .subscription-box td {
+      padding: 6px 0;
+      vertical-align: top;
+    }
+
+    .subscription-box td:first-child {
+      font-weight: 600;
+      width: 40%;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Language switching */
+    .ja { display: block; }
+    .en { display: none; }
+    body.en-mode .ja { display: none; }
+    body.en-mode .en { display: block; }
+
+    /* Inline spans need inline display */
+    p .ja, p .en, li .ja, li .en,
+    td .ja, td .en { display: inline; }
+    body.en-mode p .ja, body.en-mode li .ja,
+    body.en-mode td .ja { display: none; }
+    body.en-mode p .en, body.en-mode li .en,
+    body.en-mode td .en { display: inline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="emoji">🍳</span>
+  <h1>
+    <span class="ja">利用規約（EULA）</span>
+    <span class="en">Terms of Use (EULA)</span>
+  </h1>
+  <p>
+    <span class="ja">おうちレシピ</span>
+    <span class="en">Home Recipe</span>
+  </p>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('ja')" id="btn-ja">🇯🇵 日本語</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">🇺🇸 English</button>
+  </div>
+</header>
+
+<main>
+  <p class="updated">
+    <span class="ja">最終更新日: 2026年4月18日</span>
+    <span class="en">Last updated: April 18, 2026</span>
+  </p>
+
+  <!-- 同意 -->
+  <section>
+    <h2><span class="icon">📋</span>
+      <span class="ja">本規約への同意</span>
+      <span class="en">Acceptance of Terms</span>
+    </h2>
+    <p class="ja">
+      「おうちレシピ」（以下「本アプリ」）をダウンロード、インストール、
+      または使用することにより、本利用規約（EULA）に同意したものとみなします。
+      同意いただけない場合は、本アプリをご利用いただけません。
+    </p>
+    <p class="en">
+      By downloading, installing, or using "Home Recipe" (the "App"),
+      you agree to be bound by these Terms of Use (EULA).
+      If you do not agree, please do not use the App.
+    </p>
+  </section>
+
+  <!-- サブスクリプション詳細 -->
+  <section>
+    <h2><span class="icon">💳</span>
+      <span class="ja">プレミアムサブスクリプション</span>
+      <span class="en">Premium Subscription</span>
+    </h2>
+
+    <p class="ja">本アプリは以下の自動更新サブスクリプションを提供します：</p>
+    <p class="en">The App offers the following auto-renewable subscription:</p>
+
+    <div class="subscription-box">
+      <table>
+        <tr>
+          <td><span class="ja">プラン名</span><span class="en">Plan Name</span></td>
+          <td><span class="ja">おうちレシピ プレミアム（月額）</span><span class="en">Home Recipe Premium (Monthly)</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja">期間</span><span class="en">Duration</span></td>
+          <td><span class="ja">1ヶ月（30日）ごとに自動更新</span><span class="en">1 month (30 days), auto-renews monthly</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja">料金</span><span class="en">Price</span></td>
+          <td><span class="ja">App Store に表示された価格（国・地域により異なります）</span><span class="en">Price shown in the App Store (varies by country/region)</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja">内容</span><span class="en">Features</span></td>
+          <td>
+            <span class="ja">AI レシピ生成 無制限・広告非表示</span>
+            <span class="en">Unlimited AI recipe generation &amp; ad-free experience</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <ul>
+      <li>
+        <span class="ja">
+          購読は、現在の期間終了の24時間前までに解約しない限り、自動的に更新されます。
+        </span>
+        <span class="en">
+          Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period.
+        </span>
+      </li>
+      <li>
+        <span class="ja">
+          更新料金は更新日の24時間前以内に iTunes アカウントに請求されます。
+        </span>
+        <span class="en">
+          The renewal charge is applied to your iTunes account within 24 hours before the end of the current period.
+        </span>
+      </li>
+      <li>
+        <span class="ja">
+          サブスクリプションは、購入後に「設定」→「Apple ID」→「サブスクリプション」から管理・解約できます。
+        </span>
+        <span class="en">
+          Subscriptions can be managed and cancelled in Settings → Apple ID → Subscriptions after purchase.
+        </span>
+      </li>
+      <li>
+        <span class="ja">
+          無料トライアル期間中に解約しない場合、トライアル終了時に課金が開始されます。
+        </span>
+        <span class="en">
+          If a free trial is offered and not cancelled, you will be charged when the trial period ends.
+        </span>
+      </li>
+      <li>
+        <span class="ja">
+          現在有効なサブスクリプション期間中は返金されません。
+        </span>
+        <span class="en">
+          No refunds are provided for the current active subscription period.
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 無料プラン -->
+  <section>
+    <h2><span class="icon">🆓</span>
+      <span class="ja">無料プランについて</span>
+      <span class="en">Free Plan</span>
+    </h2>
+    <p class="ja">
+      無料プランでは、1日3回までAIレシピ生成をご利用いただけます。
+      無料プランにはGoogle AdMobによる広告が表示されます。
+    </p>
+    <p class="en">
+      The free plan allows up to 3 AI recipe generations per day.
+      Advertisements served by Google AdMob will be displayed on the free plan.
+    </p>
+  </section>
+
+  <!-- アプリの使用許諾 -->
+  <section>
+    <h2><span class="icon">📱</span>
+      <span class="ja">使用許諾</span>
+      <span class="en">License</span>
+    </h2>
+    <p class="ja">
+      本アプリのライセンスは、Apple メディアサービス利用規約に基づく
+      エンドユーザー使用許諾契約（EULA）の条件に従います。
+      本アプリは個人的・非商業的な目的でのみ使用できます。
+    </p>
+    <p class="en">
+      The license to use this App is subject to the End User License Agreement
+      (EULA) under Apple's Media Services Terms and Conditions.
+      The App may only be used for personal, non-commercial purposes.
+    </p>
+    <div class="highlight">
+      <span class="ja">
+        Apple の標準 EULA:
+      </span>
+      <span class="en">
+        Apple Standard EULA:
+      </span>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">
+        apple.com/legal/internet-services/itunes/dev/stdeula/
+      </a>
+    </div>
+  </section>
+
+  <!-- 禁止事項 -->
+  <section>
+    <h2><span class="icon">🚫</span>
+      <span class="ja">禁止事項</span>
+      <span class="en">Prohibited Uses</span>
+    </h2>
+    <ul>
+      <li>
+        <span class="ja">本アプリのリバースエンジニアリング、逆コンパイル、改ざん</span>
+        <span class="en">Reverse engineering, decompiling, or modifying the App</span>
+      </li>
+      <li>
+        <span class="ja">本アプリを商業目的で再配布・販売すること</span>
+        <span class="en">Redistributing or reselling the App for commercial purposes</span>
+      </li>
+      <li>
+        <span class="ja">違法または有害なコンテンツの生成に本アプリを使用すること</span>
+        <span class="en">Using the App to generate illegal or harmful content</span>
+      </li>
+      <li>
+        <span class="ja">本アプリの制限（1日3回の上限など）を不正に回避しようとすること</span>
+        <span class="en">Attempting to bypass App restrictions (such as the daily usage limit)</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 免責事項 -->
+  <section>
+    <h2><span class="icon">⚠️</span>
+      <span class="ja">免責事項</span>
+      <span class="en">Disclaimer</span>
+    </h2>
+    <p class="ja">
+      本アプリが提供するレシピはAIが生成したものであり、
+      正確性・安全性・完全性を保証するものではありません。
+      食物アレルギーや食品の安全性については、必ずご自身で確認してください。
+      本アプリの使用により生じた損害について、開発者は一切の責任を負いません。
+    </p>
+    <p class="en">
+      Recipes provided by this App are AI-generated and we do not guarantee
+      their accuracy, safety, or completeness.
+      Always verify food allergies and food safety yourself.
+      The developer is not liable for any damages arising from the use of this App.
+    </p>
+  </section>
+
+  <!-- 規約の変更 -->
+  <section>
+    <h2><span class="icon">📝</span>
+      <span class="ja">規約の変更</span>
+      <span class="en">Changes to These Terms</span>
+    </h2>
+    <p class="ja">
+      本規約は必要に応じて更新することがあります。
+      重要な変更がある場合は、このページにて最新版を公開します。
+      変更後も本アプリを継続してご利用いただいた場合、
+      変更後の規約に同意したものとみなします。
+    </p>
+    <p class="en">
+      These terms may be updated from time to time.
+      The latest version will be published on this page when significant changes are made.
+      Continued use of the App after changes constitutes acceptance of the updated terms.
+    </p>
+  </section>
+
+  <!-- リンク -->
+  <section>
+    <h2><span class="icon">🔗</span>
+      <span class="ja">関連リンク</span>
+      <span class="en">Related Links</span>
+    </h2>
+    <ul>
+      <li>
+        <span class="ja">プライバシーポリシー: </span>
+        <span class="en">Privacy Policy: </span>
+        <a href="./privacy-policy.html">
+          <span class="ja">こちら</span>
+          <span class="en">View Privacy Policy</span>
+        </a>
+      </li>
+      <li>
+        <span class="ja">Apple 標準 EULA: </span>
+        <span class="en">Apple Standard EULA: </span>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank">
+          apple.com/legal/internet-services/itunes/dev/stdeula/
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section>
+    <h2><span class="icon">✉️</span>
+      <span class="ja">お問い合わせ</span>
+      <span class="en">Contact Us</span>
+    </h2>
+    <p class="ja">
+      本規約に関するご質問は、App Store のレビューまたは以下のメールアドレスまでお問い合わせください。
+    </p>
+    <p class="en">
+      For questions about these terms, please contact us via App Store reviews or the email below.
+    </p>
+    <!-- TODO: メールアドレスを入力してください -->
+    <p><a href="mailto:your@email.com">your@email.com</a></p>
+  </section>
+
+</main>
+
+<footer>
+  <p>
+    <span class="ja">© 2026 おうちレシピ. All rights reserved.</span>
+    <span class="en">© 2026 Home Recipe. All rights reserved.</span>
+  </p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('en-mode', lang === 'en');
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+  }
+</script>
+
+</body>
+</html>
