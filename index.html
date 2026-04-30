@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>おうちレシピ — 冷蔵庫の食材でAIがレシピを提案</title>
+  <style>
+    :root {
+      --primary: #7EC8A4;
+      --primary-dark: #5aab87;
+      --bg: #FAFAF8;
+      --card: #FFFFFF;
+      --text: #2D2D2D;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+                   "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(160deg, #7EC8A4 0%, #5aab87 100%);
+      color: white;
+      text-align: center;
+      padding: 72px 24px 56px;
+    }
+
+    .hero .app-icon {
+      width: 96px;
+      height: 96px;
+      background: white;
+      border-radius: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      opacity: 0.9;
+      max-width: 480px;
+      margin: 0 auto 28px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .badge img {
+      height: 52px;
+    }
+
+    .lang-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .lang-btn {
+      background: rgba(255,255,255,0.25);
+      border: 1.5px solid rgba(255,255,255,0.6);
+      color: white;
+      padding: 6px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .lang-btn.active,
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.45);
+    }
+
+    /* ── Features ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .feature-card .icon {
+      font-size: 36px;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .feature-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Plans ── */
+    .plans {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 480px) {
+      .plans { grid-template-columns: 1fr; }
+    }
+
+    .plan-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+    }
+
+    .plan-card.premium {
+      border-color: var(--primary);
+      background: #F0FBF5;
+    }
+
+    .plan-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .plan-card .price {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .plan-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .plan-card ul li {
+      font-size: 13px;
+      padding: 4px 0;
+      color: var(--text);
+    }
+
+    .plan-card ul li::before {
+      content: "✓  ";
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* ── Links ── */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .link-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .link-btn:hover { opacity: 0.82; }
+
+    .link-btn.outline {
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 28px 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* Language switching */
+    .ja { display: block; }
+    .en { display: none; }
+    body.en-mode .ja { display: none; }
+    body.en-mode .en { display: block; }
+
+    /* inline spans */
+    span.ja, span.en { display: inline; }
+    body.en-mode span.ja { display: none; }
+    body.en-mode span.en { display: inline; }
+  </style>
+</head>
+<body>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="app-icon">🍳</div>
+  <h1>
+    <span class="ja">おうちレシピ</span>
+    <span class="en">Home Recipe</span>
+  </h1>
+  <p>
+    <span class="ja">冷蔵庫の食材を選ぶだけ。AIが今夜の献立を提案します。</span>
+    <span class="en">Just pick what's in your fridge. AI suggests tonight's dinner.</span>
+  </p>
+
+  <!-- App Store バッジ（URL は公開後に更新） -->
+  <a class="badge" href="https://apps.apple.com/app/id0000000000" target="_blank">
+    <img
+      src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg"
+      alt="Download on the App Store"
+    />
+  </a>
+
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('ja')" id="btn-ja">🇯🇵 日本語</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">🇺🇸 English</button>
+  </div>
+</div>
+
+<!-- ── Main ── -->
+<main>
+
+  <!-- Features -->
+  <h2 class="section-title">
+    <span class="ja">主な機能</span>
+    <span class="en">Features</span>
+  </h2>
+
+  <div class="features">
+    <div class="feature-card">
+      <span class="icon">🥕</span>
+      <h3>
+        <span class="ja">食材を登録</span>
+        <span class="en">Register Ingredients</span>
+      </h3>
+      <p>
+        <span class="ja">冷蔵庫にある食材を絵文字付きで管理。タップするだけで追加・削除できます。</span>
+        <span class="en">Manage fridge items with emoji. Add or remove with a tap.</span>
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <span class="icon">🤖</span>
+      <h3>
+        <span class="ja">AIレシピ生成</span>
+        <span class="en">AI Recipe Generation</span>
+      </h3>
+      <p>
+        <span class="ja">ChatGPT が選んだ食材に合うレシピを瞬時に提案。和食・洋食・中華など多彩なジャンルに対応。</span>
+        <span class="en">ChatGPT suggests recipes from your ingredients. Japanese, Western, Chinese & more.</span>
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <span class="icon">⭐</span>
+      <h3>
+        <span class="ja">お気に入り保存</span>
+        <span class="en">Save Favorites</span>
+      </h3>
+      <p>
+        <span class="ja">気に入ったレシピをワンタップで保存。後でいつでも見返せます。</span>
+        <span class="en">Save your favorite recipes with one tap and revisit them anytime.</span>
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <span class="icon">🌐</span>
+      <h3>
+        <span class="ja">多言語対応</span>
+        <span class="en">Multilingual</span>
+      </h3>
+      <p>
+        <span class="ja">日本語・英語に対応。言語に合わせたレシピを生成します。</span>
+        <span class="en">Supports Japanese and English, with recipes generated in your language.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Plans -->
+  <h2 class="section-title">
+    <span class="ja">料金プラン</span>
+    <span class="en">Plans</span>
+  </h2>
+
+  <div class="plans">
+    <div class="plan-card">
+      <h3>
+        <span class="ja">無料プラン</span>
+        <span class="en">Free Plan</span>
+      </h3>
+      <p class="price">
+        <span class="ja">¥0 / 永久無料</span>
+        <span class="en">¥0 / Always Free</span>
+      </p>
+      <ul>
+        <li><span class="ja">1日3回のAIレシピ生成</span><span class="en">3 AI recipes per day</span></li>
+        <li><span class="ja">食材の登録・管理</span><span class="en">Ingredient management</span></li>
+        <li><span class="ja">お気に入り保存</span><span class="en">Save favorites</span></li>
+        <li><span class="ja">履歴の閲覧</span><span class="en">View recipe history</span></li>
+      </ul>
+    </div>
+
+    <div class="plan-card premium">
+      <h3>
+        <span class="ja">プレミアムプラン</span>
+        <span class="en">Premium Plan</span>
+      </h3>
+      <p class="price">
+        <span class="ja">月額サブスクリプション</span>
+        <span class="en">Monthly subscription</span>
+      </p>
+      <ul>
+        <li><span class="ja">AIレシピ生成が無制限</span><span class="en">Unlimited AI recipes</span></li>
+        <li><span class="ja">広告なし</span><span class="en">No ads</span></li>
+        <li><span class="ja">全ジャンルが利用可能</span><span class="en">All genres available</span></li>
+        <li><span class="ja">優先サポート</span><span class="en">Priority support</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Links -->
+  <div class="links">
+    <a class="link-btn outline" href="privacy-policy.html">
+      <span class="ja">プライバシーポリシー</span>
+      <span class="en">Privacy Policy</span>
+    </a>
+    <a class="link-btn outline" href="terms-of-use.html">
+      <span class="ja">利用規約</span>
+      <span class="en">Terms of Use</span>
+    </a>
+    <a class="link-btn outline" href="support.html">
+      <span class="ja">サポート</span>
+      <span class="en">Support</span>
+    </a>
+  </div>
+
+</main>
+
+<!-- ── Footer ── -->
+<footer>
+  <p>
+    <a href="privacy-policy.html"><span class="ja">プライバシーポリシー</span><span class="en">Privacy Policy</span></a>
+    <a href="terms-of-use.html"><span class="ja">利用規約</span><span class="en">Terms of Use</span></a>
+    <a href="support.html"><span class="ja">サポート</span><span class="en">Support</span></a>
+  </p>
+  <p style="margin-top:10px;">
+    <span class="ja">© 2026 おうちレシピ. All rights reserved.</span>
+    <span class="en">© 2026 Home Recipe. All rights reserved.</span>
+  </p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('en-mode', lang === 'en');
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+  }
+</script>
+
+</body>
+</html>
